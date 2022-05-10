@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Library
 {
     public class Library
@@ -17,16 +12,12 @@ namespace Library
         }
 
         //returns false if no penalty, true if there is penalty and sets parameter penalty acordingly
-        public bool CalculatePenalty(Book book, out decimal penalty)
+        public decimal CalculatePenalty(Book book)
         {
             int daysLate = Utils.GetDiferenceInDays(book.BorrowedDate, book.ReturnedDate);
             if(daysLate <= 1)
-            {
-                penalty = 0;
-                return false;
-            }
-            penalty = daysLate * Penalties[book.Category];
-            return true;
+                return 0;
+            return daysLate * Penalties[book.Category];
         }
 
         private void SetPeanlties()
