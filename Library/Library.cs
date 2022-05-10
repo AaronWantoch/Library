@@ -11,7 +11,6 @@ namespace Library
             SetPeanlties();
         }
 
-        //returns false if no penalty, true if there is penalty and sets parameter penalty acordingly
         public decimal CalculatePenalty(Book book)
         {
             int daysLate = Utils.GetDiferenceInDays(book.BorrowedDate, book.ReturnedDate);
